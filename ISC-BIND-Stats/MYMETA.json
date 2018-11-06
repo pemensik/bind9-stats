@@ -4,7 +4,7 @@
       "Internet Systems Consortium Inc."
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.133380",
+   "generated_by" : "Module::Install version 1.06, CPAN::Meta::Converter version 2.150005",
    "license" : [
       "bsd"
    ],
@@ -22,7 +22,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "ExtUtils::MakeMaker" : "6.42"
+            "ExtUtils::MakeMaker" : "6.59"
          }
       },
       "configure" : {
@@ -52,6 +52,7 @@
          "http://opensource.org/licenses/bsd-license.php"
       ]
    },
-   "version" : "2.001",
-   "x_module_name" : "ISC::BIND::Stats"
+   "version" : "1.052000",
+   "x_module_name" : "ISC::BIND::Stats",
+   "x_serialization_backend" : "JSON::PP version 2.27400"
 }
