@@ -59,10 +59,17 @@ class Bundle(object):
         d.update(self.sections)
         return d
 
-def add_bundle(bundle):
-    print(json.dumps(bundle, default=encode_json, indent=2))
+def add_bundle(source, bundle):
+    js = json.dumps(bundle, default=encode_json, indent=2)
+    if source:
+        path = "{}-{}.json".format(source, bundle.timestamp)
+        with open(path, 'w') as f:
+            f.write(js)
+            print("Written JSON to {}".format(path))
+    else:
+        print(js)
 
-def parse_input(file):
+def parse_input(file, source):
     bundle = None
     section = None
     subsection = None
@@ -82,7 +89,7 @@ def parse_input(file):
                 section.add_section(subsection)
             if section:
                 bundle.add_section(section)
-            add_bundle(bundle)
+            add_bundle(source, bundle)
             if DEBUG:
                 print("Finished timestamp {}".format(timestamp))
             bundle = None
@@ -139,7 +146,7 @@ def print_bundles(bundles):
 if len(sys.argv)>1:
     for path in sys.argv[1:]:
         with open(path, 'r') as file:
-            bundles = parse_input(file)
+            bundles = parse_input(file, path)
             print_bundles(bundles)
 else:
-    parse_input(sys.stdin)
+    parse_input(sys.stdin, None)
